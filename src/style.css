@@ -53,22 +53,25 @@ nav {
   gap: 4.5em;
 }
 
-nav ul li :hover {
+nav ul li a:hover {
   transform: scale(1.05);
   transition: all 0.5s ease-in-out;
 }
 
 .catalogs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  max-width: 60%;
   gap: 1.5em;
-  margin: 50px;
+  margin: auto;
 }
 
 .showCatolog {
   align-items: center;
   display: flex;
-  flex-direction: column;
 }
 
 .showCatolog :hover {
@@ -81,43 +84,39 @@ h2 {
   font-weight: 400;
 }
 
-.likes-btb {
+.likes-btn {
   display: flex;
   align-items: center;
-  gap: 1em;
-}
-
-.like {
+  gap: 2em;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  display: flex;
-  justify-items: flex-end;
+  cursor: pointer;
 }
 
 .like1 {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   display: flex;
-  float: inline-end;
-  margin-left: 37%;
+  margin-left: 47%;
   margin-top: -16px;
 }
 
-button {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-}
-
 .commentsBtn {
-  padding: 8px 14px;
+  padding: 5px 37px;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   font-size: 15px;
+  transform: scale(1.05);
+}
+
+.commentsBtn:hover {
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 /* ---------footer---------- */
 footer p {
-  margin: 50px;
+  margin-left: 50px;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
 }
