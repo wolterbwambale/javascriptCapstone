@@ -46,9 +46,9 @@ catalogItems.forEach((item) => {
   const likeButton = document.createElement('i');
   likeButton.classList.add('fa-regular', 'fa-heart');
 
-  const like=document.createElement('span');
+  const like = document.createElement('span');
   like.classList.add('count-like');
-  like.textContent='6';
+  like.textContent = '6';
 
   const likesText = document.createElement('p');
   likesText.classList.add('like1');
