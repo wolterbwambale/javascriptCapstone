@@ -4,22 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesome link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="style.css">
+
+
     <title>comment</title>
 </head>
 <body>
     <div class="movie-display">
-        <img src="" alt="movie phonto">
-        <h2> movei 2</h2>
-
-    <div class="top-score">
-        <h3>Add your Score</h3>
+        <div class="photo1">
+ <img class="movi-pic" src="../assets/images/blacklist.png" alt="movie phonto">
+ 
+        <i class="fa-solid fa-xmark"></i>
+        </div>
+      
+        <h2> The Black list</h2>
+<div class="deatails">
+    <div class="df1">
+        <h4>Language:English</h4>
+         <h4>Estimated time:2hrs</h4>
+    </div>
+  <div class="df2">
+        <h4>Movie genres:Drama</h4>
+        <h4>Rating:5.5</h4>
+    </div>
+  
+</div>
+    <h4>Summary:</h4>
+    <p class="summary">
+        The Blacklist is a crime drama involving a former government agent who turned into a high-profile criminal turning himself in to the FBI offering to help catch criminals.
+    </p>
+    <div class="whole-coment">
+        <h3>Add your commets</h3>
         <form class="form">
         <div class="flex-form">
-        <input type="text" name="name" placeholder="Your Name" class="name" id="name">
-        <input type="textarea" name="score" placeholder="Your insight" class="score" id="score">
+        <input type="text" name="name" placeholder="Your Name" class="name" id="name"> <br>
+        <textarea
+            name="text-message"
+            class="type-text message"
+            cols="30"
+            rows="10"
+            placeholder="your insight"
+            id="message"
+            maxlength="500"
+            required
+          ></textarea> 
 
         </div>
-        <button class="submit" type="submit" >Comment</button>
+        <button class="commentsBtn" type="submit" >Comment</button>
         </form>
  </div>
     </div>

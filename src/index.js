@@ -1,4 +1,5 @@
 import './style.css';
+import getMovies from '../modules/getmovies.js';
 
 const catalogsContainer = document.querySelector('.catalogs');
 
