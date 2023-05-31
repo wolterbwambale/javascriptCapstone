@@ -98,7 +98,16 @@ h2 {
   font-weight: 400;
   display: flex;
   margin-left: 47%;
-  margin-top: -16px;
+  margin-top: -19px;
+}
+
+.count-like {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  display: flex;
+  margin-left: 42%;
+  margin-top: -35px;
+  padding-top: 13px;
 }
 
 .commentsBtn {
