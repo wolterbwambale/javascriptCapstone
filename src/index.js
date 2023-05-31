@@ -53,7 +53,7 @@ catalogItems.forEach((item) => {
 
   const commentsButton = document.createElement('button');
   commentsButton.type = 'submit';
-  commentsButton.classList.add('commentsBtn');
+  commentsButton.id = 'commentsBtn';
   commentsButton.textContent = 'Comments';
 
   titleContainer.appendChild(title);
@@ -65,3 +65,14 @@ catalogItems.forEach((item) => {
   catalogItem.appendChild(commentsButton);
   catalogsContainer.appendChild(catalogItem);
 });
+
+
+
+const openComment = document.getElementById('commentsBtn');
+
+const popup = document.querySelector('movie-display');
+
+openComment.addEventListener('click', function () {
+  popup.style.display ='block';
+});
+
