@@ -46,6 +46,10 @@ catalogItems.forEach((item) => {
   const likeButton = document.createElement('i');
   likeButton.classList.add('fa-regular', 'fa-heart');
 
+  const like=document.createElement('span');
+  like.classList.add('count-like');
+  like.textContent='6';
+
   const likesText = document.createElement('p');
   likesText.classList.add('like1');
   likesText.textContent = 'likes';
@@ -60,7 +64,12 @@ catalogItems.forEach((item) => {
 
   catalogItem.appendChild(image);
   catalogItem.appendChild(titleContainer);
+  catalogItem.appendChild(like);
   catalogItem.appendChild(likesText);
   catalogItem.appendChild(commentsButton);
   catalogsContainer.appendChild(catalogItem);
 });
+
+const cardCountElement = document.getElementById('cardCount');
+const cardCount = catalogItems.length;
+cardCountElement.innerHTML = `(${cardCount})`;
