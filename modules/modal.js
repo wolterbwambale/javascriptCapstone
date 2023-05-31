@@ -1,2 +1,1 @@
-import { Comments } from "./getapi.js";
-
+import { Comments } from './getapi.js';
