@@ -99,7 +99,6 @@ h2 {
   display: flex;
   margin-left: 47%;
   margin-top: -19px;
- 
 }
 
 .count-like {
@@ -109,9 +108,7 @@ h2 {
   margin-left: 42%;
   margin-top: -35px;
   padding-top: 13px;
-  
 }
-
 
 .commentsBtn {
   padding: 5px 37px;
@@ -127,24 +124,23 @@ h2 {
   cursor: pointer;
 }
 
-
 .df1 {
-    display: flex;
-    gap: 5em;
+  display: flex;
+  gap: 5em;
 }
 
-
 .df2 {
-    display: flex;
-    gap: 5em;
+  display: flex;
+  gap: 5em;
 }
 
 /* ----------popup------ */
 
 .movie-display {
-    align-items: center;
-    margin-left: 50px;
+  align-items: center;
+  margin-left: 50px;
 }
+
 #popupFormContainer {
   display: none;
   position: fixed;
@@ -174,20 +170,18 @@ h2 {
   display: block;
 }
 
-#closeButton {
-  margin-top: 10px;
-}
 
-#closeButton{
+
+#closeButton {
   float: right;
   font-size: 25px;
   font-weight: bold;
   cursor: pointer;
-  
+  margin-top: 10px;
 }
 
 
-/* 
+/*
 .fa-xmark {
     position: absolute;
     padding-left: 50%;
@@ -195,21 +189,15 @@ h2 {
 } */
 
 .summary {
-    /* font-family: 'Raleway', sans-serif;
+  /* font-family: 'Raleway', sans-serif;
     font-weight: 400; */
-    
-}
-
-h2 {
-    font-family:  sans-serif;
-    /* letter-spacing: -0.0458; */
 }
 
 h3 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-   
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
 }
+
 /* ---------footer---------- */
 footer p {
   margin-left: 50px;
