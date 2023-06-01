@@ -157,7 +157,17 @@ h2 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   font-size: 14px;
-  width: 30%;
+  width: 88%;
+}
+
+.container1 {
+  /* background-color: rgb(0, 0, 0, 1); */
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+
 }
 
 #popupFormContainer.open {
