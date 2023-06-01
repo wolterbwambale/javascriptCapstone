@@ -1,25 +1,36 @@
 const retrieveshows = async () => {
   const baseurl = 'https://api.tvmaze.com/';
+  
 
   const request = await fetch('https://api.tvmaze.com/shows');
   const response = await request.json();
   return response;
 }
 
-const updateLikeCount = async (showId, count) => {
+const updateLikeCount = async () => {
+  const ID="DZEORHzdaLtlaHc946Hd";
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-  const url = `${baseUrl}shows/${showId}/likes`;
+  const url = `${baseUrl}apps/${ID}/likes`;
+  console.log(url)
 
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ count: count })
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Access-Control-Allow-Origin': 'http://localhost:9000',
+      'Access-Control-Allow-Methods': 'POST',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+    body: JSON.stringify({"item_id": 1 })
   };
 
   const response = await fetch(url, requestOptions);
-  console.log(response);
+  const rq = await response.text();
+  console.log(rq);
   return response;
 }
+
+updateLikeCount();
 
 const displayShows = async () => {
   const allShows = await retrieveshows();
@@ -87,4 +98,7 @@ const displayShows = async () => {
   cardCountElement.innerHTML = `(${cardCount})`;
 }
 
+
+
 displayShows();
+
