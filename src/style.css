@@ -66,12 +66,18 @@ nav ul li a:hover {
   grid-row-gap: 10px;
   max-width: 60%;
   gap: 1.5em;
+  padding: 10px;
+  background: rgba(162, 162, 162, 0.861);
+  border-radius: 5px;
   margin: auto;
 }
+
 
 .showCatolog {
   align-items: center;
   display: flex;
+  border-radius: 5px;
+  background: #888;
 }
 
 .showCatolog :hover {
@@ -97,9 +103,10 @@ h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   display: flex;
-  margin-left: 47%;
+  margin-left: 54%;
   margin-top: -19px;
 }
+
 
 .count-like {
   font-family: 'Raleway', sans-serif;
@@ -141,34 +148,10 @@ h2 {
   margin-left: 50px;
 }
 
-#popupFormContainer {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 26px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  font-size: 14px;
-  width: 88%;
-}
 
-.container1 {
-  /* background-color: rgb(0, 0, 0, 1); */
-  width: 100%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
 
-}
 
-#popupFormContainer.open {
-  display: block;
-}
+
 
 
 
@@ -181,17 +164,6 @@ h2 {
 }
 
 
-/*
-.fa-xmark {
-    position: absolute;
-    padding-left: 50%;
-    width: 50%;
-} */
-
-.summary {
-  /* font-family: 'Raleway', sans-serif;
-    font-weight: 400; */
-}
 
 h3 {
   font-family: 'Raleway', sans-serif;
@@ -208,6 +180,168 @@ footer p {
 .horizontal-line {
   color: black;
 }
+
+
+
+
+/* Popup Styling */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.popup-content {
+  height: 600px;
+  overflow-y: scroll;
+  
+  background-color: #ccc;
+  width: 80%;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+ 
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+  font-size: 20px;
+}
+
+.close-button:hover {
+  color: #555;
+}
+
+.movie-pic {
+  width: 40%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.popup-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.popup-content .details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.popup-content .df1,
+.popup-content .df2 {
+  flex-basis: 45%;
+}
+
+.popup-content .df1 h2,
+.popup-content .df2 h2 {
+  font-size: 16px;
+}
+
+.popup-content .summary {
+  margin-bottom: 10px;
+}
+
+.popup-content .whole-comment h3 {
+  margin-bottom: 10px;
+}
+
+.popup-content .form .flex-form {
+  margin-bottom: 10px;
+}
+
+.popup-content .form .name,
+.popup-content .form .message {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup-content .form .message {
+  height: 100px;
+}
+
+.popup-content .form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content .form button:hover {
+  background-color: #45a049;
+}
+
+/* Container Styling */
+#work {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 56%;
+    margin: auto;
+    
+    
+}
+
+.movie-display {
+  flex-basis: 48%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.movie-display h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.movie-display .movie-pic {
+  width: 20%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.movie-display .details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.movie-display .details h2 {
+  font-size: 14px;
+}
+
+.movie-display .summary {
+  margin-bottom: 10px;
+}
+
+.movie-display .whole-comment h3 {
+  margin-bottom: 10px;
+}
+
+.fa-solid, .fas{
+  float: right;
+  font-size: 20px;
+}
+
 
 
 
