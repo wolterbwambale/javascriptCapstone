@@ -1,49 +1,48 @@
-
-
+import addComment from "../modules/addComment";
+import PopupComment from "./PopupComment";
+​
+​
 const retrieveshows = async () => {
   const baseurl = 'https://api.tvmaze.com/';
-
+​
   const request = await fetch('https://api.tvmaze.com/shows');
   const response = await request.json();
   return response;
   
 }
-
+​
 const updateLikeCount = async (itemId, updatedCount) => {
   const ID = "DZEORHzdaLtlaHc946Hd";
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const url = `${baseUrl}apps/${ID}/likes`;
   console.log(url)
-
+​
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Access-Control-Allow-Origin': 'http://localhost:9000',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
     body: JSON.stringify({ "item_id": itemId })
   };
-
+​
   const response = await fetch(url, requestOptions);
   const rq = await response.text();
   return response;
 }
-
+​
 const saveLikeCount = (itemId, count) => {
   localStorage.setItem(itemId, count.toString());
 }
-
+​
 const getLikeCount = async (itemId) => {
   const ID = "DZEORHzdaLtlaHc946Hd";
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const url = `${baseUrl}apps/${ID}/likes`;
-
+​
   try {
     const response = await fetch(url);
     const data = await response.json();
-
+​
     const likeData = data.filter((item) => item.item_id === itemId);
     if (likeData.length > 0) {
       return likeData[0].likes;
@@ -55,20 +54,20 @@ const getLikeCount = async (itemId) => {
     return 0;
   }
 }
-
+​
 const displayShows = async () => {
   const allShows = await retrieveshows();
-
+​
   const catalogsContainer = document.querySelector('.catalogs');
   catalogsContainer.innerHTML = '';
-
+​
   let end = 6;
-  for (let i = 0; i < 6; i++) {
+  for (let i = 1; i < 7; i++) {
     const singleShow = allShows[i];
-
+​
     const catalogItem = document.createElement('div');
     catalogItem.classList.add('showCatalog');
-
+​
     const image = document.createElement('img');
     image.src = singleShow.image.medium;
     image.alt = 'Movie cover photo';
@@ -115,7 +114,6 @@ const displayShows = async () => {
 
     titleContainer.appendChild(title);
     titleContainer.appendChild(likeButton);
-
     catalogItem.appendChild(image);
     catalogItem.appendChild(titleContainer);
     catalogItem.appendChild(like);
@@ -129,7 +127,6 @@ const displayShows = async () => {
   cardCountElement.innerHTML = `(${cardCount})`;
 }
 //displayShows();
-
 /*popup*/
 const container = document.getElementById('work');
 
@@ -162,8 +159,7 @@ const fetchMovieData = async () => {
             </div>
           </div>
           <h2 class="comment-count">comments(3)</h2>
-          <span>12/12/2012:alex i like the product</span><br>
-          <span>12/12/2012:alex i like the product</span>
+          <span id="comment-container-${index}">12/12/2012:alex i like the product</span ><
           <h2>Summary:</h2>
           <p class="summary">
             ${item.summary}
@@ -173,9 +169,9 @@ const fetchMovieData = async () => {
           </div>
           <form id="popupForm-${index}" class="form">
             <div class="flex-form">
-              <input type="text" name="name" placeholder="Your Name" class="name" id="name-${index}"> <br>
+              <input type="text" name="inputname" placeholder="Your Name" class="name" id="name-${index}"> <br>
               <textarea
-                name="text-message"
+                name="inputmessage"
                 class="type-text message"
                 cols="30"
                 rows="10"
@@ -189,13 +185,17 @@ const fetchMovieData = async () => {
           </form>
         </div>
       `;
-
+      
+      ​
       container.appendChild(movieDiv);
 
       const closeButton = document.getElementById(`closePopupButton-${index}`);
       closeButton.addEventListener('click', () => {
         closePopup(index);
       });
+      addComment(index)
+      const comment = new PopupComment()
+      comment.displayComments(index)
     });
   } catch (error) {
     console.error('Error fetching movie data:', error);
