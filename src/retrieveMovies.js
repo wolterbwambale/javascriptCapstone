@@ -3,7 +3,6 @@ const retrieveshows = async () => {
 
   const request = await fetch('https://api.tvmaze.com/shows');
   const response = await request.json();
-  console.log(response)
   return response;
   
 }
@@ -27,7 +26,6 @@ const updateLikeCount = async (itemId, updatedCount) => {
 
   const response = await fetch(url, requestOptions);
   const rq = await response.text();
-  console.log(rq);
   return response;
 }
 
@@ -58,7 +56,6 @@ const getLikeCount = async (itemId) => {
 
 const displayShows = async () => {
   const allShows = await retrieveshows();
-  console.log(allShows);
 
   const catalogsContainer = document.querySelector('.catalogs');
   catalogsContainer.innerHTML = '';
@@ -96,6 +93,7 @@ const displayShows = async () => {
     const commentsButton = document.createElement('button');
     commentsButton.type = 'submit';
     commentsButton.classList.add('commentsBtn');
+    commentsButton.setAttribute('data-index',singleShow.id);
     commentsButton.textContent = 'Comments';
 
     // Add a click event listener to the likeButton
@@ -128,7 +126,7 @@ const displayShows = async () => {
   const cardCount = allShows.length;
   cardCountElement.innerHTML = `(${cardCount})`;
 }
-displayShows();
+//displayShows();
 
 /*popup*/
 const container = document.getElementById('work');
@@ -185,7 +183,7 @@ const fetchMovieData = async () => {
                 required
               ></textarea>
             </div>
-            <button id="comment" type="submit">Comment</button>
+            <button id="comment" data-index = "${index + 1}" type="submit">Comment</button>
           </form>
         </div>
       `;
@@ -213,3 +211,5 @@ const closePopup = (index) => {
   const popup = document.getElementById(`movie-display-${index}`);
   popup.style.display = 'none';
 };
+
+export default displayShows;
