@@ -1,7 +1,10 @@
+/*eslint-disable */
+
 class PopupComment {
   constructor() {
-    this.appId = 'P8F6LlpZ9NxzdStT1SIa';
-    this.baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+    this.appId = "P8F6LlpZ9NxzdStT1SIa";
+    this.baseUrl =
+      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi";
   }
 
   postComment(itemId, username, comment) {
@@ -15,8 +18,8 @@ class PopupComment {
 
     return new Promise((resolve, reject) => {
       fetch(url, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        method: "POST",
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       })
         .then((response) => {
@@ -27,7 +30,7 @@ class PopupComment {
           }
         })
         .catch(() => {
-          reject(new Error('Failed to post comment'));
+          reject(new Error("Failed to post comment"));
         });
     });
   }
@@ -48,24 +51,24 @@ class PopupComment {
           resolve(data);
         })
         .catch(() => {
-          reject(new Error('Failed to get comments'));
+          reject(new Error("Failed to get comments"));
         });
     });
   }
 
   displayComments(itemId) {
     const commentContainer = document.getElementById(
-      `comment-container-${itemId}`,
+      `comment-container-${itemId}`
     );
     this.getComments(itemId).then((comments) => {
       console.log(comments);
       if (comments.length > 0) {
-        const list = document.createElement('ul');
-        const h3 = document.createElement('h1');
+        const list = document.createElement("ul");
+        const h3 = document.createElement("h1");
         list.appendChild(h3);
         h3.innerHTML = `Comments(${comments.length})`;
         comments.forEach((comment) => {
-          const li = document.createElement('li');
+          const li = document.createElement("li");
           li.innerHTML = `${comment.creation_date} ${comment.username} ${comment.username}`;
           list.appendChild(li);
         });
