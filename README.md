@@ -69,19 +69,20 @@
 
 ## 🚀 Project Screenshot <a name="live-demo"></a>
 
-![home page]()
+![home page](![image](https://github.com/wolterbwambale/javascriptCapstone/assets/110924992/f57dcd3a-ead2-4891-80c4-a0a2b5e06f91)
+)
 
-![home page]()
+![home page](<a name="![image](https://github.com/wolterbwambale/javascriptCapstone/assets/110924992/f57dcd3a-ead2-4891-80c4-a0a2b5e06f91"></a>)
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://wolterbwambale.github.io/javascriptCapstone/dist)
 
   ## 📺 Presentation <a name="presentation"></a>
 
 
-- [Live Demo video]()
+- [Live Demo video](https://drive.google.com/file/d/1gXz2LzZnkChKiNSdE-kvlSVySPvWSYOL/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- GETTING STARTED -->
@@ -149,7 +150,7 @@ The project should now be running in your web browser. Use the website's interfa
 
 ### Deployment
 
-- Project is deployed using [GitHub Pages]()
+- Project is deployed using [GitHub Pages](https://github.com/wolterbwambale/javascriptCapstone/issues)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -168,8 +169,10 @@ The project should now be running in your web browser. Use the website's interfa
 
 👤 WOLTER
 
-- GitHub: [@githubhandle]()
-- LinkedIn: [LinkedIn]()
+- - GitHub: [Bwambale](https://github.com/wolterbwambale/)
+- Twitter: [Bwambale](https://twitter.com/BwambaleWolter)
+- LinkedIn: [Bwambale](https://www.linkedin.com/in/bwambale-benny-wolter-a9284925a/)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -214,4 +217,8 @@ I would like to thank Microverse and Tvmaze for free api
 
 This project is [MIT](./LICENSE) licensed.
 
+comments
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+development
