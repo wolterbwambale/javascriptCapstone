@@ -72,7 +72,6 @@ nav ul li a:hover {
   margin: auto;
 }
 
-
 .showCatolog {
   align-items: center;
   display: flex;
@@ -106,7 +105,6 @@ h2 {
   margin-left: 54%;
   margin-top: -19px;
 }
-
 
 .count-like {
   font-family: 'Raleway', sans-serif;
@@ -143,17 +141,10 @@ h2 {
 
 /* ----------popup------ */
 
-.movie-display {
+/* .movie-display {
   align-items: center;
   margin-left: 50px;
-}
-
-
-
-
-
-
-
+} */
 
 #closeButton {
   float: right;
@@ -162,8 +153,6 @@ h2 {
   cursor: pointer;
   margin-top: 10px;
 }
-
-
 
 h3 {
   font-family: 'Raleway', sans-serif;
@@ -201,14 +190,12 @@ footer p {
 .popup-content {
   height: 600px;
   overflow-y: scroll;
-  
   background-color: #ccc;
-  width: 80%;
+  width: 90%;
   padding: 20px;
   border-radius: 5px;
   position: relative;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
- 
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
 .close-button {
@@ -222,6 +209,19 @@ footer p {
 
 .close-button:hover {
   color: #555;
+}
+
+.movie-display {
+  flex-basis: 48%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.movie-display h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .movie-pic {
@@ -292,31 +292,22 @@ footer p {
 /* Container Styling */
 #work {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 56%;
-    margin: auto;
-    
-    
-}
-
-.movie-display {
-  flex-basis: 48%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.movie-display h2 {
-  font-size: 16px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 56%;
+  margin: auto;
 }
 
 .movie-display .movie-pic {
   width: 20%;
   height: auto;
   margin-bottom: 10px;
+}
+
+.fa-solid,
+.fas {
+  float: right;
+  font-size: 20px;
 }
 
 .movie-display .details {
@@ -336,13 +327,3 @@ footer p {
 .movie-display .whole-comment h3 {
   margin-bottom: 10px;
 }
-
-.fa-solid, .fas{
-  float: right;
-  font-size: 20px;
-}
-
-
-
-
-

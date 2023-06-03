@@ -1,43 +1,45 @@
+/*eslint-disable */
 
+import addComment from "../modules/addComment.js";
+import PopupComment from "../modules/PopupComment.js";
 
+const baseurl = "https://api.tvmaze.com/";
 const retrieveshows = async () => {
-  const baseurl = 'https://api.tvmaze.com/';
 
-  const request = await fetch('https://api.tvmaze.com/shows');
+  const request = await fetch("https://api.tvmaze.com/shows");
   const response = await request.json();
   return response;
-  
-}
+};
 
 const updateLikeCount = async (itemId, updatedCount) => {
-  const ID = "DZEORHzdaLtlaHc946Hd";
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+  const ID = "P8F6LlpZ9NxzdStT1SIa";
+  const baseUrl =
+    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
   const url = `${baseUrl}apps/${ID}/likes`;
-  console.log(url)
 
   const requestOptions = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Access-Control-Allow-Origin': 'http://localhost:9000',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      "Content-Type": "application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin": "http://localhost:9000",
+      "Access-Control-Allow-Methods": "POST",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
-    body: JSON.stringify({ "item_id": itemId })
+    body: JSON.stringify({ item_id: itemId }),
   };
 
   const response = await fetch(url, requestOptions);
-  const rq = await response.text();
   return response;
-}
+};
 
 const saveLikeCount = (itemId, count) => {
   localStorage.setItem(itemId, count.toString());
-}
+};
 
 const getLikeCount = async (itemId) => {
-  const ID = "DZEORHzdaLtlaHc946Hd";
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+  const ID = "P8F6LlpZ9NxzdStT1SIa";
+  const baseUrl =
+    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
   const url = `${baseUrl}apps/${ID}/likes`;
 
   try {
@@ -47,75 +49,75 @@ const getLikeCount = async (itemId) => {
     const likeData = data.filter((item) => item.item_id === itemId);
     if (likeData.length > 0) {
       return likeData[0].likes;
-    } else {
-      return 0;
     }
+    return 0;
   } catch (error) {
     console.error(error);
     return 0;
   }
-}
+};
 
 const displayShows = async () => {
   const allShows = await retrieveshows();
+  const shows = allShows.slice(0, 21);
+  console.log(shows);
 
-  const catalogsContainer = document.querySelector('.catalogs');
-  catalogsContainer.innerHTML = '';
+  const catalogsContainer = document.querySelector(".catalogs");
+  catalogsContainer.innerHTML = "";
 
-  let end = 6;
-  for (let i = 0; i < 6; i++) {
+  const end = 6;
+  for (let i = 1; i < 7; i++) {
     const singleShow = allShows[i];
 
-    const catalogItem = document.createElement('div');
-    catalogItem.classList.add('showCatalog');
+    const catalogItem = document.createElement("div");
+    catalogItem.classList.add("showCatalog");
 
-    const image = document.createElement('img');
+    const image = document.createElement("img");
     image.src = singleShow.image.medium;
-    image.alt = 'Movie cover photo';
+    image.alt = "Movie cover photo";
 
-    const titleContainer = document.createElement('div');
-    titleContainer.classList.add('likes-btn');
+    const titleContainer = document.createElement("div");
+    titleContainer.classList.add("likes-btn");
 
-    const title = document.createElement('h2');
+    const title = document.createElement("h2");
     title.textContent = singleShow.name;
 
-    const likeButton = document.createElement('i');
-    likeButton.classList.add('fa-regular', 'fa-heart');
+    const likeButton = document.createElement("i");
+    likeButton.classList.add("fa-regular", "fa-heart");
 
-    const like = document.createElement('span');
-    like.classList.add('count-like');
+    const like = document.createElement("span");
+    like.classList.add("count-like");
     const itemId = singleShow.id;
     const initialCount = await getLikeCount(itemId);
     like.textContent = initialCount || 0; // Use the fetched count or set to 0
 
-    const likesText = document.createElement('p');
-    likesText.classList.add('like1');
-    likesText.textContent = 'likes';
+    const likesText = document.createElement("p");
+    likesText.classList.add("like1");
+    likesText.textContent = "likes";
 
-    const commentsButton = document.createElement('button');
-    commentsButton.type = 'submit';
-    commentsButton.classList.add('commentsBtn');
-    commentsButton.setAttribute('data-index',singleShow.id);
-    commentsButton.textContent = 'Comments';
+    const commentsButton = document.createElement("button");
+    commentsButton.type = "submit";
+    commentsButton.classList.add("commentsBtn");
+    commentsButton.setAttribute("data-index", singleShow.id);
+    commentsButton.textContent = "Comments";
 
     // Add a click event listener to the likeButton
-    likeButton.addEventListener('click', async () => {
+    likeButton.addEventListener("click", () => {
       let updatedCount = parseInt(like.textContent);
-      updatedCount++; // Increment the count
+      updatedCount++;
 
       like.textContent = updatedCount.toString();
       saveLikeCount(itemId, updatedCount);
 
-      await updateLikeCount(itemId, updatedCount);
+      updateLikeCount(itemId, updatedCount);
     });
 
-    commentsButton.addEventListener('click', () => {
-      openPopup(i); // Open the corresponding popup when the button is clicked
+    commentsButton.addEventListener("click", () => {
+      openPopup(i);
     });
 
     titleContainer.appendChild(title);
     titleContainer.appendChild(likeButton);
-
     catalogItem.appendChild(image);
     catalogItem.appendChild(titleContainer);
     catalogItem.appendChild(like);
@@ -124,26 +126,36 @@ const displayShows = async () => {
     catalogsContainer.appendChild(catalogItem);
   }
 
-  const cardCountElement = document.getElementById('cardCount');
+  const cardCountElement = document.getElementById("cardCount");
   const cardCount = allShows.length;
   cardCountElement.innerHTML = `(${cardCount})`;
-}
-//displayShows();
+};
 
-/*popup*/
-const container = document.getElementById('work');
+/* popup */
+const container = document.getElementById("work");
+
+const openPopup = (index) => {
+  const popup = document.getElementById(`movie-display-${index}`);
+  popup.style.display = "block";
+};
+
+const closePopup = (index) => {
+  const popup = document.getElementById(`movie-display-${index}`);
+  popup.style.display = "none";
+};
 
 const fetchMovieData = async () => {
   try {
-    const response = await fetch('https://api.tvmaze.com/shows');
+    const response = await fetch("https://api.tvmaze.com/shows");
     const data = await response.json();
 
-    const movies = Object.values(data); // Convert the response object to an array
+    const movies = Object.values(data.splice(0, 21)); // Convert the response object to an array
+    console.log(movies);
 
     movies.forEach((item, index) => {
-      const movieDiv = document.createElement('div');
+      const movieDiv = document.createElement("div");
       movieDiv.id = `movie-display-${index}`;
-      movieDiv.className = 'popup';
+      movieDiv.className = "popup";
       movieDiv.innerHTML = `
         <div class="popup-content">
           <span id="closePopupButton-${index}" class="close-popup-button"><i class="fa-solid fa-xmark"></i></span>
@@ -157,13 +169,11 @@ const fetchMovieData = async () => {
               <h2>Estimated time: ${item.runtime} min</h2>
             </div>
             <div class="df2">
-              <h2>Movie genres: ${item.genres.join(', ')}</h2>
+              <h2>Movie genres: ${item.genres.join(", ")}</h2>
               <h2>Rating: ${item.rating.average}</h2>
             </div>
           </div>
-          <h2 class="comment-count">comments(3)</h2>
-          <span>12/12/2012:alex i like the product</span><br>
-          <span>12/12/2012:alex i like the product</span>
+          <span id="comment-container-${index}"></span >
           <h2>Summary:</h2>
           <p class="summary">
             ${item.summary}
@@ -173,9 +183,9 @@ const fetchMovieData = async () => {
           </div>
           <form id="popupForm-${index}" class="form">
             <div class="flex-form">
-              <input type="text" name="name" placeholder="Your Name" class="name" id="name-${index}"> <br>
+              <input type="text" name="inputname" placeholder="Your Name" class="name" id="name-${index}"> <br>
               <textarea
-                name="text-message"
+                name="inputmessage"
                 class="type-text message"
                 cols="30"
                 rows="10"
@@ -185,7 +195,9 @@ const fetchMovieData = async () => {
                 required
               ></textarea>
             </div>
-            <button id="comment" data-index = "${index + 1}" type="submit">Comment</button>
+            <button id="comment" data-index = "${
+              index + 1
+            }" type="submit">Comment</button>
           </form>
         </div>
       `;
@@ -193,25 +205,18 @@ const fetchMovieData = async () => {
       container.appendChild(movieDiv);
 
       const closeButton = document.getElementById(`closePopupButton-${index}`);
-      closeButton.addEventListener('click', () => {
+      closeButton.addEventListener("click", () => {
         closePopup(index);
       });
+      addComment(index);
+      // const comment = new PopupComment()
+      // comment.displayComments(index)
     });
   } catch (error) {
-    console.error('Error fetching movie data:', error);
+    console.error("Error fetching movie data:", error);
   }
 };
 
 fetchMovieData();
-
-const openPopup = (index) => {
-  const popup = document.getElementById(`movie-display-${index}`);
-  popup.style.display = 'block';
-};
-
-const closePopup = (index) => {
-  const popup = document.getElementById(`movie-display-${index}`);
-  popup.style.display = 'none';
-};
 
 export default displayShows;
