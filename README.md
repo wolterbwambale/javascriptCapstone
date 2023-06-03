@@ -77,7 +77,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://wolterbwambale.github.io/javascriptCapstone/dist)
 
   ## 📺 Presentation <a name="presentation"></a>
 
