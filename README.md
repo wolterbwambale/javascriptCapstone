@@ -169,7 +169,9 @@ The project should now be running in your web browser. Use the website's interfa
 
 👤 WOLTER
 
-- GitHub: [@githubhandle](https://github.com/wolterbwambale)
+- - GitHub: [Bwambale](https://github.com/wolterbwambale/)
+- Twitter: [Bwambale](https://twitter.com/BwambaleWolter)
+- LinkedIn: [Bwambale](https://www.linkedin.com/in/bwambale-benny-wolter-a9284925a/)
 
 
 
