@@ -1,5 +1,6 @@
 /*eslint-disable */
 
+
 import addComment from "../modules/addComment.js";
 import PopupComment from "../modules/PopupComment.js";
 
@@ -209,8 +210,7 @@ const fetchMovieData = async () => {
         closePopup(index);
       });
       addComment(index);
-      // const comment = new PopupComment()
-      // comment.displayComments(index)
+
     });
   } catch (error) {
     console.error("Error fetching movie data:", error);

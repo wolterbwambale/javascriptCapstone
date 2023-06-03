@@ -4,3 +4,4 @@ const getMovies = async () => {
 };
 
 export default getMovies;
+

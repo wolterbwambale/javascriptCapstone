@@ -14,6 +14,7 @@ test('returns 2 when length is two', () => {
   expect(container.textContent).toBe('Comments (2)');
 });
 
+
 test('returns 0 when length is 0', () => {
   const container = { textContent: 'hello' };
   const arr = [];

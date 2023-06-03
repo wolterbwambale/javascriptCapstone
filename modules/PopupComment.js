@@ -1,5 +1,6 @@
 /*eslint-disable */
 
+
 class PopupComment {
   constructor() {
     this.appId = "P8F6LlpZ9NxzdStT1SIa";
