@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "dev": "webpack --mode development",
+    "test": "jest",
     "build": "webpack --mode production",
     "watch": "webpack --config webpack.config.js --watch",
     "start": "webpack serve --open"

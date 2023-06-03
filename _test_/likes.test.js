@@ -1,7 +1,7 @@
 /*eslint-disable */
 
 
-import { getCommentCount } from "../modules/likesCounter";
+import { getCommentCount } from "../modules/likesCounter.js";
 
 
 test('returns 1 when length is one', () => {
