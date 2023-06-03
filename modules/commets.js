@@ -17,24 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const request = await fetch(resource);
       const response = await request.json();
       return response;
-    };
-
-    // const userInput = '';
-    // const commentInput = '';
-
-    // const callButton = document.querySelectorAll(`.commentsBtn[data-index]`);
-    // callButton.forEach(button => {
-    //   button.addEventListener('click',(event) => {
-    //     const buttonId = event.target.dataset.index;
-    //     console.log(buttonId);
-    //     const AccessComments = getComments(buttonId);
-    //   })
-    // })
-
-    // const submitButton = document.querySelectorAll('#comment');
-    //     // submitButton.forEach(button => {
-    //     //   button.addEventListener('click',(event) => {
-    //     //     const buttonId = event.target.dataset.i
+    }
+    
   } catch (error) {
     return error;
   }
