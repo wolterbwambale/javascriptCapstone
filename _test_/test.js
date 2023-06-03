@@ -1,4 +1,6 @@
 /*eslint-disable */
+import { getCommentCount } from "../modules/addComment";
+
 
 test('returns 1 when length is one', () => {
   const container = { textContent: 'lorem' };
