@@ -150,7 +150,7 @@ The project should now be running in your web browser. Use the website's interfa
 
 ### Deployment
 
-- Project is deployed using [GitHub Pages]()
+- Project is deployed using [GitHub Pages](https://github.com/wolterbwambale/javascriptCapstone/issues)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -169,8 +169,8 @@ The project should now be running in your web browser. Use the website's interfa
 
 👤 WOLTER
 
-- GitHub: [@githubhandle]()
-- LinkedIn: [LinkedIn]()
+- GitHub: [@githubhandle](https://github.com/wolterbwambale)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
