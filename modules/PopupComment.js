@@ -1,22 +1,22 @@
 import addComment from "../modules/addComment";
 import PopupComment from "./PopupComment";
-​
-​
+
+
 const retrieveshows = async () => {
   const baseurl = 'https://api.tvmaze.com/';
-​
+
   const request = await fetch('https://api.tvmaze.com/shows');
   const response = await request.json();
   return response;
   
 }
-​
+
 const updateLikeCount = async (itemId, updatedCount) => {
   const ID = "DZEORHzdaLtlaHc946Hd";
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const url = `${baseUrl}apps/${ID}/likes`;
   console.log(url)
-​
+
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -24,25 +24,25 @@ const updateLikeCount = async (itemId, updatedCount) => {
     },
     body: JSON.stringify({ "item_id": itemId })
   };
-​
+
   const response = await fetch(url, requestOptions);
   const rq = await response.text();
   return response;
 }
-​
+
 const saveLikeCount = (itemId, count) => {
   localStorage.setItem(itemId, count.toString());
 }
-​
+
 const getLikeCount = async (itemId) => {
   const ID = "DZEORHzdaLtlaHc946Hd";
   const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
   const url = `${baseUrl}apps/${ID}/likes`;
-​
+
   try {
     const response = await fetch(url);
     const data = await response.json();
-​
+
     const likeData = data.filter((item) => item.item_id === itemId);
     if (likeData.length > 0) {
       return likeData[0].likes;
@@ -54,20 +54,20 @@ const getLikeCount = async (itemId) => {
     return 0;
   }
 }
-​
+
 const displayShows = async () => {
   const allShows = await retrieveshows();
-​
+
   const catalogsContainer = document.querySelector('.catalogs');
   catalogsContainer.innerHTML = '';
-​
+
   let end = 6;
   for (let i = 1; i < 7; i++) {
     const singleShow = allShows[i];
-​
+
     const catalogItem = document.createElement('div');
     catalogItem.classList.add('showCatalog');
-​
+
     const image = document.createElement('img');
     image.src = singleShow.image.medium;
     image.alt = 'Movie cover photo';
