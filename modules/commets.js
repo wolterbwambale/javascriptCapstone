@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     await displayShows();
 
-    // const AppID = 'DZEORHzdaLtlaHc946Hd';
     const baseUrl =
       "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
 
