@@ -2,6 +2,7 @@
 
 import addComment from "../modules/addComment.js";
 import PopupComment from "../modules/PopupComment.js";
+import {updateLikeCount,saveLikeCount,getLikeCount} from '../modules/likesCount.js'
 
 const baseurl = "https://api.tvmaze.com/";
 const retrieveshows = async () => {
@@ -11,63 +12,20 @@ const retrieveshows = async () => {
   return response;
 };
 
-const updateLikeCount = async (itemId, updatedCount) => {
-  const ID = "P8F6LlpZ9NxzdStT1SIa";
-  const baseUrl =
-    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
-  const url = `${baseUrl}apps/${ID}/likes`;
 
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-      "Access-Control-Allow-Origin": "http://localhost:9000",
-      "Access-Control-Allow-Methods": "POST",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-    body: JSON.stringify({ item_id: itemId }),
-  };
 
-  const response = await fetch(url, requestOptions);
-  return response;
-};
-
-const saveLikeCount = (itemId, count) => {
-  localStorage.setItem(itemId, count.toString());
-};
-
-const getLikeCount = async (itemId) => {
-  const ID = "P8F6LlpZ9NxzdStT1SIa";
-  const baseUrl =
-    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
-  const url = `${baseUrl}apps/${ID}/likes`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const likeData = data.filter((item) => item.item_id === itemId);
-    if (likeData.length > 0) {
-      return likeData[0].likes;
-    }
-    return 0;
-  } catch (error) {
-    console.error(error);
-    return 0;
-  }
-};
-
+let startIndex = 0; 
+const showLimit = 6; 
 const displayShows = async () => {
   const allShows = await retrieveshows();
-  const shows = allShows.slice(0, 21);
+  const shows = allShows.slice(startIndex, startIndex + showLimit);
   console.log(shows);
 
   const catalogsContainer = document.querySelector(".catalogs");
   catalogsContainer.innerHTML = "";
 
-  const end = 6;
-  for (let i = 1; i < 7; i++) {
-    const singleShow = allShows[i];
+  for (let i = 0; i < shows.length; i++) { 
+    const singleShow = shows[i]; 
 
     const catalogItem = document.createElement("div");
     catalogItem.classList.add("showCatalog");
@@ -101,7 +59,7 @@ const displayShows = async () => {
     commentsButton.setAttribute("data-index", singleShow.id);
     commentsButton.textContent = "Comments";
 
-    // Add a click event listener to the likeButton
+   
     likeButton.addEventListener("click", () => {
       let updatedCount = parseInt(like.textContent);
       updatedCount++;
@@ -126,10 +84,26 @@ const displayShows = async () => {
     catalogsContainer.appendChild(catalogItem);
   }
 
+  // Add "Show More" button if there are more shows to display
+  const showMoreButton = document.createElement("button");
+  showMoreButton.classList.add("showMoreBtn");
+  showMoreButton.textContent = "Show More";
+
+  if (startIndex + showLimit < allShows.length) {
+    catalogsContainer.appendChild(showMoreButton);
+  }
+
+  
+  showMoreButton.addEventListener("click", () => {
+    startIndex += showLimit; 
+    displayShows(); 
+  });
+
   const cardCountElement = document.getElementById("cardCount");
   const cardCount = allShows.length;
   cardCountElement.innerHTML = `(${cardCount})`;
 };
+
 
 /* popup */
 const container = document.getElementById("work");
