@@ -1,29 +1,45 @@
-/*eslint-disable */
+const {
+  getLikeCount, saveLikeCount,
+} = require('./like.js');
 
-import {getLikeCount} from "../modules/getLikesCount.js";
+global.localStorage = {
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+};
 
-const fetch = require("node-fetch");
+describe('saveLikeCount', () => {
+  it('should save the like count to localStorage', () => {
+    const itemId = 'exampleItemId';
+    const count = 5;
 
-describe("getLikeCount", () => {
-  beforeEach(() => {
-    global.fetch = jest.fn().mockResolvedValue({
-      json: jest.fn().mockResolvedValue([
-        { item_id: "123", likes: 5 },
-        { item_id: "456", likes: 10 },
-        { item_id: "789", likes: 7 },
-      ]),
-    });
+    saveLikeCount(itemId, count);
+
+    expect(localStorage.setItem).toHaveBeenCalledWith(itemId, count.toString());
   });
-  afterEach(() => {
-    global.fetch.mockClear();
+});
+
+describe('getLikeCount', () => {
+  it('should return the like count from localStorage if present', () => {
+    const itemId = 'exampleItemId';
+    const expectedCount = 5;
+
+    localStorage.getItem.mockReturnValueOnce(expectedCount.toString());
+
+    const likeCount = getLikeCount(itemId);
+
+    expect(localStorage.getItem).toHaveBeenCalledWith(itemId);
+    expect(likeCount).toBe(expectedCount);
   });
-  it("should return the like count for a valid item ID", async () => {
-    const itemId = "456";
-    const result = await getLikeCount(itemId);
-    expect(result).toBe(10);
-    expect(fetch).toHaveBeenCalledTimes(1);
-    expect(fetch).toHaveBeenCalledWith(
-      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/P8F6LlpZ9NxzdStT1SIa/likes"
-    );
+
+  it('should return 0 if the like count is not present in localStorage', () => {
+    const itemId = 'exampleItemId';
+
+    // Mocking the localStorage.getItem function to return null
+    localStorage.getItem.mockReturnValueOnce(null);
+
+    const likeCount = getLikeCount(itemId);
+
+    expect(localStorage.getItem).toHaveBeenCalledWith(itemId);
+    expect(likeCount).toBe(0);
   });
 });
