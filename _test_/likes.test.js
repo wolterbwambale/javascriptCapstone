@@ -1,26 +1,45 @@
-/*eslint-disable */
+const {
+  getLikeCount, saveLikeCount,
+} = require('./like.js');
 
+global.localStorage = {
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+};
 
-import { getCommentCount } from "../modules/likesCounter";
+describe('saveLikeCount', () => {
+  it('should save the like count to localStorage', () => {
+    const itemId = 'exampleItemId';
+    const count = 5;
 
+    saveLikeCount(itemId, count);
 
-test('returns 1 when length is one', () => {
-  const container = { textContent: 'lorem' };
-  const arr = [{ item: 1 }];
-  getLikeCountt(container, arr);
-  expect(container.textContent).toBe('Comments (1)');
+    expect(localStorage.setItem).toHaveBeenCalledWith(itemId, count.toString());
+  });
 });
 
-test('returns 2 when length is two', () => {
-  const container = { textContent: 'ipsum' };
-  const arr = [{ item: 1 }, { item: 2 }];
-  getLikeCountt(container, arr);
-  expect(container.textContent).toBe('Comments (2)');
-});
+describe('getLikeCount', () => {
+  it('should return the like count from localStorage if present', () => {
+    const itemId = 'exampleItemId';
+    const expectedCount = 5;
 
-test('returns 0 when length is 0', () => {
-  const container = { textContent: 'hello' };
-  const arr = [];
-  getLikeCountt(container, arr);
-  expect(container.textContent).toBe('Comments (0)');
+    localStorage.getItem.mockReturnValueOnce(expectedCount.toString());
+
+    const likeCount = getLikeCount(itemId);
+
+    expect(localStorage.getItem).toHaveBeenCalledWith(itemId);
+    expect(likeCount).toBe(expectedCount);
+  });
+
+  it('should return 0 if the like count is not present in localStorage', () => {
+    const itemId = 'exampleItemId';
+
+    // Mocking the localStorage.getItem function to return null
+    localStorage.getItem.mockReturnValueOnce(null);
+
+    const likeCount = getLikeCount(itemId);
+
+    expect(localStorage.getItem).toHaveBeenCalledWith(itemId);
+    expect(likeCount).toBe(0);
+  });
 });

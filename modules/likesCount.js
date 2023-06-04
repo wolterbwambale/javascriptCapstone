@@ -1,15 +1,17 @@
+/*eslint-disable */
 const updateLikeCount = async (itemId) => {
-  const ID = 'P8F6LlpZ9NxzdStT1SIa';
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+  const ID = "P8F6LlpZ9NxzdStT1SIa";
+  const baseUrl =
+    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
   const url = `${baseUrl}apps/${ID}/likes`;
 
   const requestOptions = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Access-Control-Allow-Origin': 'http://localhost:9000',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      "Content-Type": "application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin": "http://localhost:9000",
+      "Access-Control-Allow-Methods": "POST",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
     body: JSON.stringify({ item_id: itemId }),
   };
@@ -23,8 +25,9 @@ const saveLikeCount = (itemId, count) => {
 };
 
 const getLikeCount = async (itemId) => {
-  const ID = 'P8F6LlpZ9NxzdStT1SIa';
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+  const ID = "P8F6LlpZ9NxzdStT1SIa";
+  const baseUrl =
+    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
   const url = `${baseUrl}apps/${ID}/likes`;
 
   try {
