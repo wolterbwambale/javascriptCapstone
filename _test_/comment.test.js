@@ -1,10 +1,10 @@
 /*eslint-disable */
 
-import {getLikeCount} from "../modules/getLikesCount.js";
+import { addComment } from "../modules/getLikesCount.js";
 
 const fetch = require("node-fetch");
 
-describe("getLikeCount", () => {
+describe("addComment", () => {
   beforeEach(() => {
     global.fetch = jest.fn().mockResolvedValue({
       json: jest.fn().mockResolvedValue([
@@ -19,7 +19,7 @@ describe("getLikeCount", () => {
   });
   it("should return the like count for a valid item ID", async () => {
     const itemId = "456";
-    const result = await getLikeCount(itemId);
+    const result = await addComment(itemId);
     expect(result).toBe(10);
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(fetch).toHaveBeenCalledWith(
