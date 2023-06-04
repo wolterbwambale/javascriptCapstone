@@ -5,6 +5,7 @@ const getLikeCount = async (itemId) => {
     "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/";
   const url = `${baseUrl}apps/${ID}/likes`;
 
+  
   try {
     const response = await fetch(url);
     const data = await response.json();
